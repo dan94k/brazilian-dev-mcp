@@ -1,4 +1,4 @@
-export function validarCPF(cpf) {
+export function validateCPF(cpf) {
     const cleanCPF = cpf.replace(/\D/g, "");
 
     if (cleanCPF.length !== 11) return { valido: false };
@@ -12,7 +12,7 @@ export function validarCPF(cpf) {
         multiplier--;
     }
     let remainder = sum % 11;
-    const digito1 = remainder < 2 ? 0 : 11 - remainder;
+    const digit1 = remainder < 2 ? 0 : 11 - remainder;
 
     sum = 0;
     multiplier = 11;
@@ -21,7 +21,7 @@ export function validarCPF(cpf) {
         multiplier--;
     }
     remainder = sum % 11;
-    const digito2 = remainder < 2 ? 0 : 11 - remainder;
+    const digit2 = remainder < 2 ? 0 : 11 - remainder;
 
-    return { valido: digito1 === parseInt(cleanCPF[9]) && digito2 === parseInt(cleanCPF[10]) };
+    return { valido: digit1 === parseInt(cleanCPF[9]) && digit2 === parseInt(cleanCPF[10]) };
 }

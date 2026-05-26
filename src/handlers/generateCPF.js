@@ -1,28 +1,28 @@
-export function gerarCPF() {
-    const digitos = [];
+export function generateCPF() {
+    const digits = [];
     for (let i = 0; i < 9; i++) {
-        digitos.push(Math.floor(Math.random() * 10));
+        digits.push(Math.floor(Math.random() * 10));
     }
 
     let sum = 0;
     let multiplier = 10;
     for (let i = 0; i < 9; i++) {
-        sum += digitos[i] * multiplier;
+        sum += digits[i] * multiplier;
         multiplier--;
     }
     let remainder = sum % 11;
-    digitos.push(remainder < 2 ? 0 : 11 - remainder);
+    digits.push(remainder < 2 ? 0 : 11 - remainder);
 
     sum = 0;
     multiplier = 11;
     for (let i = 0; i < 10; i++) {
-        sum += digitos[i] * multiplier;
+        sum += digits[i] * multiplier;
         multiplier--;
     }
     remainder = sum % 11;
-    digitos.push(remainder < 2 ? 0 : 11 - remainder);
+    digits.push(remainder < 2 ? 0 : 11 - remainder);
 
-    const cpf = digitos.join("");
+    const cpf = digits.join("");
 
     return {
         cpf,

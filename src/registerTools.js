@@ -1,6 +1,6 @@
 import z from "zod";
-import { validarCPF } from "./handlers/validarCPF.js";
-import { gerarCPF } from "./handlers/gerarCPF.js";
+import { validateCPF } from "./handlers/validateCPF.js";
+import { generateCPF } from "./handlers/generateCPF.js";
 
 export function registerTools(server) {
 
@@ -13,7 +13,7 @@ export function registerTools(server) {
       })
     },
     ({ cpf }) => ({
-      content: [{ type: "text", text: JSON.stringify(validarCPF(cpf)) }]
+      content: [{ type: "text", text: JSON.stringify(validateCPF(cpf)) }]
     })
   );
 
@@ -24,7 +24,7 @@ export function registerTools(server) {
       inputSchema: z.object({})
     },
     () => ({
-      content: [{ type: "text", text: JSON.stringify(gerarCPF()) }]
+      content: [{ type: "text", text: JSON.stringify(generateCPF()) }]
     })
   );
 }
