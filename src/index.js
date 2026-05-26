@@ -1,11 +1,14 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import z from "zod";
+import { registerTools } from "./registerTools.js";
 
 const server = new McpServer({
     name: "brazilian-dev-mcp",
     version: "0.1.0",
+    description: "MCP Server com ferramentas úteis para o dia a dia do desenvolvedor",
 });
+
+registerTools(server);
 
 async function main() {
     const transport = new StdioServerTransport();
