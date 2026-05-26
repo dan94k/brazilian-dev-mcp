@@ -1,5 +1,6 @@
 import z from "zod";
 import { validarCPF } from "./handlers/validarCPF.js";
+import { gerarCPF } from "./handlers/gerarCPF.js";
 
 export function registerTools(server) {
 
@@ -13,6 +14,17 @@ export function registerTools(server) {
     },
     ({ cpf }) => ({
       content: [{ type: "text", text: JSON.stringify(validarCPF(cpf)) }]
+    })
+  );
+
+  server.registerTool(
+    "gerar_cpf",
+    {
+      description: "Gera um CPF válido aleatório",
+      inputSchema: z.object({})
+    },
+    () => ({
+      content: [{ type: "text", text: JSON.stringify(gerarCPF()) }]
     })
   );
 }
