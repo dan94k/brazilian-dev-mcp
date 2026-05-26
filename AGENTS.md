@@ -57,7 +57,5 @@ src/
 
 ## Quirks
 
-- **Package name typo:** `package.json` name is `"btrazilian-dev-mcp"` (missing the `a` in `brazilian`) — don't "fix" it without coordinating, as it may affect published identity
 - **No TypeScript:** Despite `tsx` being the runner, all source is plain `.js` — do not introduce `.ts` files without adding a tsconfig
 - **Stdio transport:** This is an MCP server that communicates over stdin/stdout. `console.error()` is used for logging (stdout is reserved for the protocol). Never add `console.log()` to src/
-- **Planned tools roadmap:** The bottom of `registerTools.js` has commented-out plans for ~50+ tools across categories (CPF/CNPJ, CEP, phone, currency, validation, text, date, crypto, JSON, fake data). Use that as the design spec when implementing new handlers
