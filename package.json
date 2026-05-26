@@ -1,0 +1,16 @@
+{
+  "name": "btrazilian-dev-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx @modelcontextprotocol/inspector npx tsx src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "tsx": "^4.22.3",
+    "zod": "^4.4.3"
+  }
+}
