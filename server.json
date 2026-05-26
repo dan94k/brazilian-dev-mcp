@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.dan94k/brazilian-dev-mcp",
-  "description": "MCP server com utilitários para desenvolvedores brasileiros — CPF, CNPJ, CEP, telefone, moeda, dados fake e mais",
+  "description": "Utilitários para desenvolvedores brasileiros — CPF, CNPJ, CEP, telefone, moeda, dados fake e mais",
   "repository": {
     "url": "https://github.com/dan94k/brazilian-dev-mcp",
     "source": "github"
