@@ -7,7 +7,7 @@ export function registerTools(server) {
   server.registerTool(
     "validar_cpf",
     {
-      description: "Valida um CPF usando o algoritmo de dígitos verificadores do CPF",
+      description: "Valida se um CPF é válido e retorna o motivo da invalidez",
       inputSchema: z.object({
         cpf: z.string()
       })
