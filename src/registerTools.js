@@ -1,6 +1,8 @@
 import z from "zod";
 import { validateCPF } from "./handlers/validateCPF.js";
 import { generateCPF } from "./handlers/generateCPF.js";
+import { validateCNPJ } from "./handlers/validateCNPJ.js";
+import { generateCNPJ } from "./handlers/generateCNPJ.js";
 
 export function registerTools(server) {
 
@@ -25,6 +27,32 @@ export function registerTools(server) {
     },
     () => ({
       content: [{ type: "text", text: JSON.stringify(generateCPF()) }]
+    })
+  );
+
+  server.registerTool(
+    "validar_cnpj",
+    {
+      description: "Valida se um CNPJ é válido. Aceita formato numérico (antigo) e alfanumérico (novo). Detecta automaticamente o formato.",
+      inputSchema: z.object({
+        cnpj: z.string()
+      })
+    },
+    ({ cnpj }) => ({
+      content: [{ type: "text", text: JSON.stringify(validateCNPJ(cnpj)) }]
+    })
+  );
+
+  server.registerTool(
+    "gerar_cnpj",
+    {
+      description: "Gera um CNPJ válido aleatório. Use 'numerico' para o formato antigo ou 'alfanumerico' para o novo.",
+      inputSchema: z.object({
+        formato: z.enum(["numerico", "alfanumerico"]).default("numerico")
+      })
+    },
+    ({ formato }) => ({
+      content: [{ type: "text", text: JSON.stringify(generateCNPJ(formato)) }]
     })
   );
 }
