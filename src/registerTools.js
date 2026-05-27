@@ -4,6 +4,7 @@ import { generateCPF } from "./handlers/generateCPF.js";
 import { validateCNPJ } from "./handlers/validateCNPJ.js";
 import { generateCNPJ } from "./handlers/generateCNPJ.js";
 import { validateCEP } from "./handlers/validateCEP.js";
+import { searchCEP } from "./handlers/searchCEP.js";
 
 export function registerTools(server) {
 
@@ -67,6 +68,19 @@ export function registerTools(server) {
     },
     ({ cep }) => ({
       content: [{ type: "text", text: JSON.stringify(validateCEP(cep)) }]
+    })
+  );
+
+  server.registerTool(
+    "consultar_cep",
+    {
+      description: "Consulta endereço pelo CEP na API ViaCEP. Aceita formato com traço (12345-678) ou apenas números (12345678).",
+      inputSchema: z.object({
+        cep: z.string()
+      })
+    },
+    async ({ cep }) => ({
+      content: [{ type: "text", text: JSON.stringify(await searchCEP(cep)) }]
     })
   );
 }
