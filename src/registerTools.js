@@ -3,6 +3,7 @@ import { validateCPF } from "./handlers/validateCPF.js";
 import { generateCPF } from "./handlers/generateCPF.js";
 import { validateCNPJ } from "./handlers/validateCNPJ.js";
 import { generateCNPJ } from "./handlers/generateCNPJ.js";
+import { validateCEP } from "./handlers/validateCEP.js";
 
 export function registerTools(server) {
 
@@ -53,6 +54,19 @@ export function registerTools(server) {
     },
     ({ formato }) => ({
       content: [{ type: "text", text: JSON.stringify(generateCNPJ(formato)) }]
+    })
+  );
+
+  server.registerTool(
+    "validar_cep",
+    {
+      description: "Valida se um CEP é válido. Aceita formato com traço (12345-678) ou apenas números (12345678).",
+      inputSchema: z.object({
+        cep: z.string()
+      })
+    },
+    ({ cep }) => ({
+      content: [{ type: "text", text: JSON.stringify(validateCEP(cep)) }]
     })
   );
 }
