@@ -5,6 +5,7 @@ import { validateCNPJ } from "./handlers/validateCNPJ.js";
 import { generateCNPJ } from "./handlers/generateCNPJ.js";
 import { validateCEP } from "./handlers/validateCEP.js";
 import { searchCEP } from "./handlers/searchCEP.js";
+import { getCurrencyQuote } from "./handlers/getCurrencyQuote.js";
 
 export function registerTools(server) {
 
@@ -81,6 +82,19 @@ export function registerTools(server) {
     },
     async ({ cep }) => ({
       content: [{ type: "text", text: JSON.stringify(await searchCEP(cep)) }]
+    })
+  );
+
+  server.registerTool(
+    "consultar_cotacao",
+    {
+      description: "Consulta a cotação de uma moeda em relação ao Real (BRL), Dólar (USD) e Euro (EUR) usando a API AwesomeAPI. Use código de 3 letras (ex: USD, EUR, BTC, ARS).",
+      inputSchema: z.object({
+        moeda: z.string()
+      })
+    },
+    async ({ moeda }) => ({
+      content: [{ type: "text", text: JSON.stringify(await getCurrencyQuote(moeda)) }]
     })
   );
 }
