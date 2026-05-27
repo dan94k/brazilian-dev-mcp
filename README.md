@@ -60,12 +60,9 @@ npm run dev
 | `gerar_cpf` | Gera um CPF válido aleatório (módulo 11) | ✅ |
 | `validar_cnpj` | Valida CNPJ (formato numérico e alfanumérico) | ✅ |
 | `gerar_cnpj` | Gera um CNPJ válido aleatório (módulo 11) | ✅ |
-| `buscar_cep` | Consulta ViaCEP — retorna logradouro, bairro, cidade, UF | ⬜ |
-| `validar_cep` | Valida CEP com regex `/^\d{5}-?\d{3}$/` | ⬜ |
-| `gerar_endereco` | Retorna endereço aleatório completo (rua, nº, bairro, cidade, UF, CEP) | ⬜ |
-| `gerar_telefone` | Gera telefone no formato `(DDD) 9XXXX-XXXX` | ⬜ |
-| `validar_telefone` | Valida telefone com regex | ⬜ |
-| `converter_moeda` | Converte entre moedas via API exchangerate-api | ⬜ |
+| `consultar_cep` | Consulta endereço pelo CEP na API ViaCEP | ✅ |
+| `validar_cep` | Valida CEP com regex `/^\d{5}-?\d{3}$/` | ✅ |
+| `consultar_cotacao` | Consulta cotação de moedas (BRL, USD, EUR) via API AwesomeAPI | ✅ |
 | `validar_email` | Valida e-mail com regex | ⬜ |
 | `validar_url` | Valida URL usando construtor nativo `URL` | ⬜ |
 | `validar_ipv4` | Valida IPv4 (4 octetos de 0-255) | ⬜ |
@@ -73,11 +70,6 @@ npm run dev
 | `gerar_lorem` | Gera Lorem Ipsum com X palavras | ⬜ |
 | `eh_feriado` | Verifica se uma data é feriado nacional | ⬜ |
 | `eh_dia_util` | Verifica se uma data é dia útil | ⬜ |
-| `gerar_nome` | Gera nome completo aleatório (nome + sobrenome) | ⬜ |
-| `gerar_email` | Gera e-mail a partir de um nome (`nome.sobrenome@dominio.com`) | ⬜ |
-| `gerar_senha` | Gera senha aleatória com tamanho configurável | ⬜ |
-| `gerar_empresa` | Gera nome de empresa fake | ⬜ |
-| `gerar_texto` | Gera texto Lorem Ipsum com N linhas | ⬜ |
 
 ## Arquitetura
 
@@ -90,6 +82,9 @@ src/
     generateCPF.js
     validateCNPJ.js
     generateCNPJ.js
+    validateCEP.js
+    searchCEP.js
+    getCurrencyQuote.js
 ```
 
 ### Design: Tools independentes
