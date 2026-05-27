@@ -7,12 +7,12 @@
     "url": "https://github.com/dan94k/brazilian-dev-mcp",
     "source": "github"
   },
-  "version": "1.0.3",
+  "version": "1.1.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "brazilian-dev-mcp",
-      "version": "1.0.3",
+      "version": "1.1.0",
       "transport": {
         "type": "stdio"
       }
